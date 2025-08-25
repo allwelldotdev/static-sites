@@ -1,3 +1,3 @@
-# Tinker "Coming Soon" Static Web Pages
+# Tinker Static Sites Web Pages
 
-"Coming Soon" or "Under Construction" web page templates.
+Static sites I build for several purposes such as "Coming Soon" web page templates.
