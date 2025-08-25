@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Allwell.DEV - Software & Systems Engineer</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .container {
+        text-align: center;
+        max-width: 600px;
+        padding: 2rem;
+        position: relative;
+        z-index: 2;
+      }
+
+      .logo {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: glow 2s ease-in-out infinite alternate;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+
+      .logo:hover {
+        transform: scale(1.1);
+      }
+
+      @keyframes glow {
+        from {
+          filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+        }
+        to {
+          filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.5));
+        }
+      }
+
+      .main-heading {
+        font-size: 3.5rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        animation: slideUp 1s ease-out;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .subtitle {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+        animation: slideUp 1s ease-out 0.3s both;
+      }
+
+      .typing-text {
+        display: inline-block;
+        border-right: 2px solid #4ecdc4;
+        animation: blink 1s infinite;
+      }
+
+      @keyframes blink {
+        50% {
+          border-color: transparent;
+        }
+      }
+
+      .description {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        opacity: 0.8;
+        animation: slideUp 1s ease-out 0.6s both;
+      }
+
+      /* .countdown {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        animation: slideUp 1s ease-out 0.7s both;
+      }
+
+      .countdown-item {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 1rem;
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        min-width: 80px;
+      }
+
+      .countdown-number {
+        font-size: 1.5rem;
+        font-weight: 700;
+        display: block;
+      }
+
+      .countdown-label {
+        font-size: 0.8rem;
+        opacity: 0.8;
+        text-transform: uppercase;
+      } */
+
+      .tech-stack {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        animation: slideUp 1s ease-out 0.9s both;
+      }
+
+      .tech-item {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .tech-item:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px) scale(1.05);
+      }
+
+      .contact-info {
+        animation: slideUp 1s ease-out 1.2s both;
+        margin-bottom: 2rem;
+      }
+
+      .email-link {
+        color: #4ecdc4;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: color 0.3s ease;
+      }
+
+      .email-link:hover {
+        color: #ff6b6b;
+      }
+
+      .notification {
+        background: rgba(76, 175, 80, 0.2);
+        border: 1px solid rgba(76, 175, 80, 0.5);
+        padding: 1rem;
+        border-radius: 10px;
+        margin-top: 1rem;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+      }
+
+      .notification.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* .theme-toggle {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        color: white;
+        padding: 0.5rem;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .theme-toggle:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: rotate(180deg);
+      } */
+
+      /* Dark theme */
+      /* body.dark-theme {
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+      } */
+
+      /* Background decoration */
+      .bg-decoration {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      .bg-decoration::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 1px,
+          transparent 1px
+        );
+        background-size: 50px 50px;
+        animation: float 20s linear infinite;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0) rotate(0deg);
+        }
+        100% {
+          transform: translateY(-100px) rotate(360deg);
+        }
+      }
+
+      .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .particle:hover {
+        transform: scale(2);
+        background: #ff6b6b;
+      }
+
+      .particle:nth-child(1) {
+        top: 20%;
+        left: 10%;
+        animation: pulse 3s infinite;
+      }
+
+      .particle:nth-child(2) {
+        top: 60%;
+        right: 15%;
+        animation: pulse 3s infinite 1s;
+      }
+
+      .particle:nth-child(3) {
+        bottom: 30%;
+        left: 20%;
+        animation: pulse 3s infinite 2s;
+      }
+
+      .particle:nth-child(4) {
+        top: 30%;
+        right: 30%;
+        animation: pulse 3s infinite 0.5s;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 0.3;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.5);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .main-heading {
+          font-size: 2.5rem;
+        }
+        .logo {
+          font-size: 2rem;
+        }
+        .tech-stack {
+          gap: 0.5rem;
+        }
+        .tech-item {
+          font-size: 0.8rem;
+          padding: 0.4rem 0.8rem;
+        }
+        /* .countdown {
+          gap: 0.5rem;
+        }
+        .countdown-item {
+          min-width: 60px;
+          padding: 0.8rem;
+        } */
+        /* .theme-toggle {
+          top: 1rem;
+          right: 1rem;
+        } */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <button class="theme-toggle" id="themeToggle">🌙</button> -->
+
+    <div class="bg-decoration">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+
+    <div class="container">
+      <div class="logo" id="logo">&lt;Allwell.DEV/&gt;</div>
+      <h1 class="main-heading">Website Update Coming Soon!</h1>
+      <p class="subtitle"><span class="typing-text" id="typingText"></span></p>
+
+      <!-- <div class="countdown" id="countdown">
+        <div class="countdown-item">
+          <span class="countdown-number" id="days">--</span>
+          <span class="countdown-label">Days</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="hours">--</span>
+          <span class="countdown-label">Hours</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="minutes">--</span>
+          <span class="countdown-label">Minutes</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="seconds">--</span>
+          <span class="countdown-label">Seconds</span>
+        </div>
+      </div> -->
+
+      <p class="description">
+        I'm currently working on my developer portfolio and blog. This space
+        will showcase my projects, technical insights, tutorials, and journey in
+        software and systems engineering.
+      </p>
+      <div class="tech-stack">
+        <span class="tech-item" data-tech="Linux">Linux</span>
+        <span class="tech-item" data-tech="Rust">Rust</span>
+        <span class="tech-item" data-tech="Python">Python</span>
+        <span class="tech-item" data-tech="TypeScript">TypeScript</span>
+        <span class="tech-item" data-tech="Git">Git</span>
+        <span class="tech-item" data-tech="Docker">Docker</span>
+        <span class="tech-item" data-tech="Kubernetes">Kubernetes</span>
+        <span class="tech-item" data-tech="GitOps">GitOps</span>
+        <span class="tech-item" data-tech="AWS">AWS</span>
+        <span class="tech-item" data-tech="GenAI">GenAI</span>
+      </div>
+      <div class="contact-info">
+        <p>
+          Get in touch:
+          <a href="mailto:allwelldotdev@gmail.com" class="email-link"
+            >allwelldotdev@gmail.com</a
+          >
+        </p>
+      </div>
+
+      <div class="notification" id="notification"></div>
+    </div>
+
+    <script>
+      // Typing animation
+      const phrases = [
+        "Building software systems...",
+        "Programming the future...",
+        "Continuous learning...",
+        // "Crafting clean code...",
+      ];
+
+      let currentPhrase = 0;
+      let currentChar = 0;
+      let isDeleting = false;
+      const typingSpeed = 100;
+      const deletingSpeed = 50;
+      const pauseTime = 2000;
+
+      function typeText() {
+        const typingElement = document.getElementById("typingText");
+        const current = phrases[currentPhrase];
+
+        if (!isDeleting) {
+          typingElement.textContent = current.substring(0, currentChar);
+          currentChar++;
+
+          if (currentChar === current.length) {
+            setTimeout(() => (isDeleting = true), pauseTime);
+            setTimeout(typeText, pauseTime);
+            return;
+          }
+        } else {
+          typingElement.textContent = current.substring(0, currentChar);
+          currentChar--;
+
+          if (currentChar === 0) {
+            isDeleting = false;
+            currentPhrase = (currentPhrase + 1) % phrases.length;
+          }
+        }
+
+        setTimeout(typeText, isDeleting ? deletingSpeed : typingSpeed);
+      }
+
+      // Start typing animation
+      typeText();
+
+      // Countdown timer (set to 30 days from now)
+      /* const launchDate = new Date();
+      launchDate.setDate(launchDate.getDate() + 30);
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = launchDate.getTime() - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("days").textContent = days
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("hours").textContent = hours
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("minutes").textContent = minutes
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("seconds").textContent = seconds
+          .toString()
+          .padStart(2, "0");
+
+        if (distance < 0) {
+          document.getElementById("countdown").innerHTML =
+            "<h2>🎉 Website is Live! 🎉</h2>";
+        }
+      } */
+
+      // Update countdown every second
+      /* setInterval(updateCountdown, 1000);
+      updateCountdown(); */
+
+      // Theme toggle
+      /* const themeToggle = document.getElementById("themeToggle");
+      let isDark = false;
+
+      themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-theme");
+        isDark = !isDark;
+        themeToggle.textContent = isDark ? "☀️" : "🌙";
+      }); */
+
+      // Tech stack interactions
+      const techItems = document.querySelectorAll(".tech-item");
+      const notification = document.getElementById("notification");
+
+      techItems.forEach((item) => {
+        item.addEventListener("click", () => {
+          const tech = item.dataset.tech;
+          showNotification(
+            `${tech} is one of my favorite technologies to work with!`
+          );
+        });
+      });
+
+      function showNotification(message) {
+        notification.textContent = message;
+        notification.classList.add("show");
+
+        setTimeout(() => {
+          notification.classList.remove("show");
+        }, 3000);
+      }
+
+      // Logo click easter egg
+      const logo = document.getElementById("logo");
+      let clickCount = 0;
+
+      logo.addEventListener("click", () => {
+        clickCount++;
+        if (clickCount === 5) {
+          showNotification(
+            "🎉 You found the easter egg! My favourite programming language is Rust!"
+          );
+          clickCount = 0;
+        }
+      });
+
+      // Interactive particles
+      const particles = document.querySelectorAll(".particle");
+      particles.forEach((particle) => {
+        particle.addEventListener("click", () => {
+          particle.style.background = "#4ecdc4";
+          setTimeout(() => {
+            particle.style.background = "rgba(255, 255, 255, 0.6)";
+          }, 1000);
+        });
+      });
+
+      // Mouse trail effect (subtle)
+      let mouseTrail = [];
+      document.addEventListener("mousemove", (e) => {
+        mouseTrail.push({ x: e.clientX, y: e.clientY, time: Date.now() });
+
+        // Remove old trail points
+        mouseTrail = mouseTrail.filter(
+          (point) => Date.now() - point.time < 500
+        );
+      });
+
+      // Keyboard shortcuts
+      document.addEventListener("keydown", (e) => {
+        // if (e.key === "t" || e.key === "T") {
+        //   themeToggle.click();
+        // }
+        if (e.key === "Enter") {
+          showNotification(
+            "Thanks for your interest! The site will be ready soon! 🚀"
+          );
+        }
+      });
+    </script>
+  </body>
+</html>
